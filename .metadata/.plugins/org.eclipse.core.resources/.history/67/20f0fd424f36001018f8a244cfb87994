@@ -71,7 +71,7 @@ public class personDao {
 			System.out.println("예외");
 			e.printStackTrace();
 		}
-		return "result.jsp";
+		return "./result.jsp";
 	}
 	public String regPerson() {
 		String sql ="insert into personnel values(?,?,?,?,?,?)";

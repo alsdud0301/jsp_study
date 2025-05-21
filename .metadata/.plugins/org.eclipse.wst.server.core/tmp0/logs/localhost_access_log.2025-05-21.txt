@@ -170,3 +170,17 @@
 0:0:0:0:0:0:0:1 - - [21/May/2025:22:45:16 +0900] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 863
 0:0:0:0:0:0:0:1 - - [21/May/2025:22:46:10 +0900] "GET /practice1/delete HTTP/1.1" 200 421
 0:0:0:0:0:0:0:1 - - [21/May/2025:22:46:10 +0900] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 863
+127.0.0.1 - - [21/May/2025:22:48:46 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:48:46 +0900] "GET /practice1/index.jsp HTTP/1.1" 200 493
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:48:50 +0900] "GET /practice1/update HTTP/1.1" 200 592
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:49:24 +0900] "GET /practice1/check HTTP/1.1" 200 637
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:49:29 +0900] "POST /practice1/result HTTP/1.1" 200 338
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:49:33 +0900] "GET /practice1/register HTTP/1.1" 200 576
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:49:50 +0900] "POST /practice1/reg HTTP/1.1" 200 576
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:50:02 +0900] "POST /practice1/updatePerson HTTP/1.1" 200 592
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:50:37 +0900] "POST /practice1/reg HTTP/1.1" 200 576
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:52:55 +0900] "GET /practice1/index.jsp HTTP/1.1" 200 493
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:52:58 +0900] "GET /practice1/resign HTTP/1.1" 200 421
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:56:18 +0900] "POST /practice1/delete HTTP/1.1" 200 421
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:56:33 +0900] "GET /practice1/update HTTP/1.1" 200 592
+0:0:0:0:0:0:0:1 - - [21/May/2025:22:56:57 +0900] "POST /practice1/updatePerson HTTP/1.1" 200 592

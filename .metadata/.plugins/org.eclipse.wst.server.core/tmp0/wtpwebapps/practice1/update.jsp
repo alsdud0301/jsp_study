@@ -11,8 +11,16 @@
 	<form method="post" action="./updatePerson">
 	성명<input type="text" name="name">
 	사원번호<input type="text" name="id">
-	소속부서<input type="text" name="dept">
-	직급<input type="text" name="position">
+	소속부서<select name="dept">
+		<option value="인사부"></option>
+		<option value="경리부"></option>
+	</select>
+	직급
+	<select name="">
+		<option value="1">1급</option>
+		<option value="2">2급</option>
+		<option value="3">3급</option>
+	</select>
 	직책<input type="text" name="duty">
 	연락처<input type="text" name="phone">
 	<input type="submit" value="변경">

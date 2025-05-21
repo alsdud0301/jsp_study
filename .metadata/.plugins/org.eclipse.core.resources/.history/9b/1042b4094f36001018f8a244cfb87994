@@ -71,7 +71,7 @@ public class personDao {
 			System.out.println("예외");
 			e.printStackTrace();
 		}
-		return "result.jsp";
+		return "./result.jsp";
 	}
 	public String regPerson() {
 		String sql ="insert into personnel values(?,?,?,?,?,?)";
@@ -111,7 +111,7 @@ public class personDao {
 			pstmt.setString(6, req.getParameter("name"));
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("업데이트 예외");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
