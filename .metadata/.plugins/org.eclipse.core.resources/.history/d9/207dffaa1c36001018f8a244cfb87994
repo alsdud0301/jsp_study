@@ -1,0 +1,17 @@
+package service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Personservice {
+	private HttpServletRequest req;
+	private HttpServletResponse resp;
+	public Personservice(HttpServletRequest req, HttpServletResponse resp) {
+		this.req = req;
+		this.resp = resp;
+	}
+	
+	
+	
+	
+}

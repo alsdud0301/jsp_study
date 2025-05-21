@@ -1,0 +1,41 @@
+package controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dao.personDao;
+import dto.Forward;
+
+
+@WebServlet("/check")
+public class PersonController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
+		String cmd = req.getServletPath();
+		
+		Forward fw = new Forward();
+		personDao pDao = new personDao();
+		String path=null;
+		switch(req.getServletPath()) {
+		case "/check":
+			pDao.getPersonlist();
+			break;
+		}
+		pDao.close();
+		req.getRequestDispatcher(path).forward(req, resp);
+		
+		
+		
+	}
+   
+	
+
+}

@@ -1,0 +1,146 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dto.Person;
+
+public class personDao {
+	Connection con;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	Person ps;
+	private HttpServletRequest req;
+	private HttpServletResponse resp;
+
+	public personDao(HttpServletRequest req, HttpServletResponse resp) {
+		this.req=req;
+		this.resp=resp;
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("예외");
+			e.printStackTrace();
+		}
+		try {
+			con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "ICIA", "1234");
+		} catch (SQLException e) {
+			System.out.println("예외");
+			e.printStackTrace();
+		}
+	}
+	public void connect() {
+		con = JdbcUtill.connect();
+	}
+	public void close() {
+		JdbcUtill.close(con);
+		JdbcUtill.close(pstmt);
+		JdbcUtill.close(rs);
+	}
+	public String getPersonlist(){
+		System.out.print("테스트");
+		ArrayList<HashMap<String,String>> personList = new ArrayList<HashMap<String,String>>();
+		String id = req.getParameter("id");
+		System.out.println(id);
+		String sql = "select * from personnel where id=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				HashMap<String,String> pmap= new HashMap<String,String>();
+				pmap.put("id",rs.getString("id"));
+				pmap.put("name",rs.getString("name"));
+				pmap.put("dept",rs.getString("dept"));
+				pmap.put("position",rs.getString("position"));
+				pmap.put("duty",rs.getString("duty"));
+				pmap.put("phone",rs.getString("phone"));
+				personList.add(pmap);
+			}
+			req.setAttribute("plist",personList);
+			System.out.println(personList);
+		} catch (SQLException e) {
+			System.out.println("예외");
+			e.printStackTrace();
+		}
+		return "./result.jsp";
+	}
+	public String regPerson() {
+		String sql ="insert into personnel values(?,?,?,?,?,?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			System.out.println(req.getParameter("id"));
+			pstmt.setString(1, req.getParameter("id"));
+			pstmt.setString(2, req.getParameter("name"));
+			pstmt.setString(3, req.getParameter("dept"));
+			pstmt.setString(4, req.getParameter("position"));
+			pstmt.setString(5, req.getParameter("duty"));
+			pstmt.setString(6, req.getParameter("phone"));
+			pstmt.executeUpdate();
+			System.out.println("성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "./register";
+		
+		
+	}
+	
+	public String check() {
+		// TODO Auto-generated method stub
+		return "./check.jsp";
+	}
+	public String updatePerson() {
+		String sql = "update personnel set dept=?,position=?,duty=?,phone=? where id=?,name=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, req.getParameter("dept"));
+			pstmt.setString(2, req.getParameter("position"));
+			pstmt.setString(3, req.getParameter("duty"));
+			pstmt.setString(4, req.getParameter("phone"));
+			pstmt.setString(5, req.getParameter("id"));
+			pstmt.setString(6, req.getParameter("name"));
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "./update";
+	}
+	public String update() {
+		// TODO Auto-generated method stub
+		return "./update.jsp";
+	}
+	public String delete() {
+		String sql = "delete from personnel where id=? and name=?";
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,req.getParameter("id"));
+			pstmt.setString(2,req.getParameter("name"));
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "./resign";
+	}
+	public String resign() {
+		// TODO Auto-generated method stub
+		return "./resign.jsp";
+	}
+	public String register() {
+		// TODO Auto-generated method stub
+		return "./register.jsp";
+	}
+
+}

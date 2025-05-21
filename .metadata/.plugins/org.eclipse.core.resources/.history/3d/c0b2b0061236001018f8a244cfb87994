@@ -1,0 +1,47 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.Person;
+
+public class personDao {
+	Connection con;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	Person ps;
+	public void connect() {
+		con = JdbcUtill.connect();
+	}
+	public void close() {
+		JdbcUtill.close(con);
+		JdbcUtill.close(pstmt);
+		JdbcUtill.close(rs);
+	}
+	public ArrayList<Person> getPersonlist(String id){
+		String sql = "select * from personnel where id=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			ArrayList<String> personList = new ArrayList<>();
+			if(rs.next()) {
+				personList.add(rs.getString(1));
+				personList.add(rs.getString(2));
+				personList.add(rs.getString(3));
+				personList.add(rs.getString(4));
+				personList.add(rs.getString(5));
+				personList.add(rs.getString(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+}

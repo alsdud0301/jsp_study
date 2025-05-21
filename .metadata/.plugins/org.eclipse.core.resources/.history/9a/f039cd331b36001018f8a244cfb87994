@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>인사관리조회화면</h1>
+	<form method="post" action="./check">
+		<input type="radio"> 
+		<span>사원번호로 조회</span>
+		<span><input type="text" name="id"></span>
+		<input type="radio"> 
+		<span>부서명으로 조회</span>
+		<span>
+			<select>
+				<option value="인사부">인사부</option>
+				<option value="경리부">경리부</option>
+			</select>
+		</span>
+		<div>
+			<input type="submit" value="조회"> <input type="button"
+				value="취소">
+		</div>
+	</form>
+</body>
+</html>
