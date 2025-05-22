@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.personDao;
 
 
-@WebServlet({"/index","/check","/result","/register","/reg","/update","/resign","/delete","/updatePerson"})
+@WebServlet({"/index","/check","/result","/result2","/register","/reg","/update","/resign","/delete","/updatePerson"})
 public class PersonController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +26,9 @@ public class PersonController extends HttpServlet {
 			break;
 		case "/result":
 			path=pDao.getPersonlist();
+			break;
+		case "/result2":
+			path=pDao.getPersonlist2();
 			break;
 		case "/register":
 			path=pDao.register();

@@ -73,6 +73,33 @@ public class personDao {
 		}
 		return "result.jsp";
 	}
+	
+	public String getPersonlist2(){
+		System.out.print("테스트");
+		ArrayList<HashMap<String,String>> personList = new ArrayList<HashMap<String,String>>();
+		String sql = "select * from personnel where dept=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, req.getParameter("dept"));
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				HashMap<String,String> pmap= new HashMap<String,String>();
+				pmap.put("id",rs.getString("id"));
+				pmap.put("name",rs.getString("name"));
+				pmap.put("dept",rs.getString("dept"));
+				pmap.put("position",rs.getString("position"));
+				pmap.put("duty",rs.getString("duty"));
+				pmap.put("phone",rs.getString("phone"));
+				personList.add(pmap);
+			}
+			req.setAttribute("plist",personList);
+			System.out.println(personList);
+		} catch (SQLException e) {
+			System.out.println("예외");
+			e.printStackTrace();
+		}
+		return "result.jsp";
+	}
 	public String regPerson() {
 		String sql ="insert into personnel values(?,?,?,?,?,?)";
 		try {

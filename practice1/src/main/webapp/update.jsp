@@ -16,7 +16,7 @@
 		<option value="경리부"></option>
 	</select>
 	직급
-	<select name="">
+	<select name="duty">
 		<option value="1">1급</option>
 		<option value="2">2급</option>
 		<option value="3">3급</option>
